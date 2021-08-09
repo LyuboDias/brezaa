@@ -1,0 +1,52 @@
+/* global vars */
+
+// -- FONTS
+$ubuntu: "Ubuntu", sans-serif;
+$overpass: "Overpass", sans-serif;
+
+// -- COLORS
+
+// Primary
+$red: hsl(356, 100%, 66%);
+$light-red: hsl(355, 100%, 74%);
+$dark-blue: hsl(208, 49%, 24%);
+
+// Neutral
+$white: hsl(0, 0%, 100%);
+$grey-blue: hsl(240, 2%, 79%);
+$dark-grey-blue: hsl(207, 13%, 34%);
+$very-dark-blue: hsl(240, 10%, 16%);
+
+// Gradient
+$back-grad: linier-gradient(hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+// Background gradient - Intro/CTA mobile nav:
+
+// - Very light red: hsl(13, 100%, 72%)
+// - Light red: hsl(353, 100%, 62%)
+
+$body-back-grad: linier-gradient(hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+// Background gradient - body:
+
+// - Very dark gray blue: hsl(237, 17%, 21%)
+// - Very dark desaturated blue: hsl(237, 23%, 32%)
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  color: hsl(208, 49%, 24%);
+  font-family: $ubuntu;
+  font-weight: 400;
+}
+
+// .navbar {
+//   font-family: $ubuntu;
+// }
+
+.img-test {
+  width: 600px;
+}
