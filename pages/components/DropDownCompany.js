@@ -7,6 +7,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,23 @@ const useStyles = makeStyles((theme) => ({
   },
   arrow: {
     marginLeft: "5px",
+  },
+  menuList: {
+    padding: "8px 20px",
+  },
+  dropLink: {
+    textDecoration: "none",
+    color: "rgba(0,0,0,0.6)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+    },
+  },
+  dropItem: {
+    color: "rgba(0,0,0,0.6)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+      backgroundColor: "white",
+    },
   },
 }));
 
@@ -73,11 +91,14 @@ export default function DropDownCompany() {
           onClick={handleToggle}
         >
           Company
-          <img
+          <Image
             src="/icon-arrow-light.svg"
             alt="some"
+            // layout="responsive"
+            width={10}
+            height={7}
             className={classes.arrow}
-          ></img>
+          />
         </Button>
         <Popper
           open={open}
@@ -97,14 +118,35 @@ export default function DropDownCompany() {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
+                    className={classes.menuList}
                     autoFocusItem={open}
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>About</MenuItem>
-                    <MenuItem onClick={handleClose}>Team</MenuItem>
-                    <MenuItem onClick={handleClose}>Blog</MenuItem>
-                    <MenuItem onClick={handleClose}>Careers</MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      About
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Team
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Blog
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Careers
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

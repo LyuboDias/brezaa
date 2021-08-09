@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
 import MyFooter from "./components/MyFooter";
 import MyNavbar from "./components/MyNavbar";
 import MyBanner from "./components/MyBanner";
@@ -11,19 +10,27 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   landing: {
-    height: "80vh",
+    height: "70vh",
     backgroundImage:
       "linear-gradient(to bottom right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
     borderRadius: "0px 0px 0px 100px",
   },
   inner: {
-    height: "80vh",
+    height: "70vh",
     width: "100%",
     backgroundImage: "url(/bg-pattern-intro.svg)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "-250px",
   },
 }));
+
+// const theme = createMuiTheme({
+//   pallete: {
+//     primary: {
+//       main: "hsl(356, 100%, 66%)",
+//     },
+//   },
+// });
 
 export default function Home() {
   const classes = useStyles();
@@ -42,10 +49,9 @@ export default function Home() {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        />
         <link rel="icon" href="/favicon-32x32.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
           rel="stylesheet"
@@ -55,6 +61,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
+      {/* <ThemeProvider theme={theme}> */}
       <div className={classes.landing}>
         <div className={classes.inner}>
           <MyNavbar />
@@ -65,6 +72,7 @@ export default function Home() {
       <Content2 />
       <Content3 />
       <MyFooter />
+      {/* </ThemeProvider> */}
     </div>
   );
   ``;

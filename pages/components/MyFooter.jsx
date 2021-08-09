@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,16 +37,22 @@ export default function MyFooter() {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <img src="/logo.svg" alt="some"></img>
+        <Image
+          src="/logo.svg"
+          alt="some"
+          width={101}
+          height={40}
+          className={classes.arrow}
+        />
       </div>
       <div>
         <h3>Product</h3>
 
         <ul className={classes.footerUl}>
           <li className={classes.footerLi}>
-            <a href="/" className={classes.footerLink}>
-              Overview
-            </a>
+            <Link href="/">
+              <span className={classes.footerLink}>Overview</span>
+            </Link>
           </li>
           <li className={classes.footerLi}>
             <Link href="/">

@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Image from "next/image";
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +50,12 @@ export default function Content2() {
         <Container>
           <div className={classes.wrapper}>
             <div>
-              <img src="/illustration-phones.svg" alt="some"></img>
+              <Image
+                src="/illustration-phones.svg"
+                alt="some"
+                width={1100}
+                height={1200}
+              />
             </div>
             <div className={classes.textDiv}>
               <Typography

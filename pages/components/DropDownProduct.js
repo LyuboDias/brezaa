@@ -7,6 +7,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,23 @@ const useStyles = makeStyles((theme) => ({
   },
   arrow: {
     marginLeft: "5px",
+  },
+  menuList: {
+    padding: "8px 20px",
+  },
+  dropLink: {
+    textDecoration: "none",
+    color: "rgba(0,0,0,0.6)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+    },
+  },
+  dropItem: {
+    color: "rgba(0,0,0,0.6)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+      backgroundColor: "white",
+    },
   },
 }));
 
@@ -73,11 +91,14 @@ export default function DropDownProduct() {
           onClick={handleToggle}
         >
           Product
-          <img
+          <Image
             src="/icon-arrow-light.svg"
             alt="some"
+            // layout="responsive"
+            width={10}
+            height={7}
             className={classes.arrow}
-          ></img>
+          />
         </Button>
         <Popper
           open={open}
@@ -97,15 +118,41 @@ export default function DropDownProduct() {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
+                    className={classes.menuList}
                     autoFocusItem={open}
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Overview</MenuItem>
-                    <MenuItem onClick={handleClose}>Pricing</MenuItem>
-                    <MenuItem onClick={handleClose}>Marketplace</MenuItem>
-                    <MenuItem onClick={handleClose}>Features</MenuItem>
-                    <MenuItem onClick={handleClose}>Integrations</MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Overview
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Pricing
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Marketplace
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Features
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Integrations
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

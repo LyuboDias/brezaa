@@ -8,6 +8,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +31,20 @@ const useStyles = makeStyles((theme) => ({
   },
   menuList: {
     padding: "8px 20px",
+  },
+  dropLink: {
+    textDecoration: "none",
+    color: "rgba(0,0,0,0.6)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+    },
+  },
+  dropItem: {
+    color: "rgba(0,0,0,0.6)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+      backgroundColor: "white",
+    },
   },
 }));
 
@@ -78,11 +93,14 @@ export default function DropDownContact() {
           onClick={handleToggle}
         >
           Contact
-          <img
+          <Image
             src="/icon-arrow-light.svg"
             alt="some"
+            // layout="responsive"
+            width={10}
+            height={7}
             className={classes.arrow}
-          ></img>
+          />
         </Button>
         <Popper
           open={open}
@@ -107,11 +125,26 @@ export default function DropDownContact() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>
-                      <Link href="/contact">Contact</Link>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      <Link href="/contact" className={classes.dropLink}>
+                        Contact
+                      </Link>
                     </MenuItem>
-                    <MenuItem onClick={handleClose}>Newsletter</MenuItem>
-                    <MenuItem onClick={handleClose}>LinkedIn</MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      Newsletter
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.dropItem}
+                    >
+                      LinkedIn
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

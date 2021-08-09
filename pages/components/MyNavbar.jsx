@@ -6,6 +6,7 @@ import DropDownProduct from "./DropDownProduct";
 import DropDownCompany from "./DropDownCompany";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     textDecoration: "none",
     margin: "0px 20px",
+    cursor: "pointer",
+  },
+  home: {
+    cursor: "pointer",
   },
 }));
 
@@ -34,7 +39,15 @@ export default function MyNavbar() {
   return (
     <Toolbar className={classes.root}>
       <div className={classes.container}>
-        <img src="/logo.svg" alt="some"></img>
+        <Link href="/">
+          <Image
+            src="/logo.svg"
+            alt="some"
+            width={101}
+            height={40}
+            className={classes.home}
+          />
+        </Link>
         <DropDownProduct />
         <DropDownCompany />
         <DropDownContact />
