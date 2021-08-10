@@ -1,7 +1,7 @@
 import React from "react";
-import SignUpBtn from "./SignUpBtn";
-import LearnBtn from "./LearnBtn";
-import StartBtn from "./StartBtn";
+import SignUpBtn from "./Buttons/SignUpBtn";
+import LearnBtn from "./Buttons/LearnBtn";
+import StartBtn from "./Buttons/StartBtn";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 

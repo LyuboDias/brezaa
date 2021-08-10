@@ -1,11 +1,11 @@
 import React from "react";
 import Head from "next/head";
 import MyFooter from "./components/MyFooter";
-import MyNavbar from "./components/MyNavbar";
+import MyNavbar from "./components/Navbar/MyNavbar";
 import MyBanner from "./components/MyBanner";
-import Content1 from "./components/Content1";
-import Content2 from "./components/Content2";
-import Content3 from "./components/Content3";
+import SectionEditor from "./components/SectionEditor";
+import SectionPhones from "./components/SectionPhones";
+import SectionLaptop from "./components/SectionLaptop";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -96,9 +96,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Content1 />
-        <Content2 />
-        <Content3 />
+        <SectionEditor />
+        <SectionPhones />
+        <SectionLaptop />
         <MyFooter />
       </ThemeProvider>
     </div>

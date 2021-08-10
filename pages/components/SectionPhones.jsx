@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Content2() {
+export default function SectionPhones() {
   const classes = useStyles();
 
   return (
