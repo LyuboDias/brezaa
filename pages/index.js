@@ -6,40 +6,57 @@ import MyBanner from "./components/MyBanner";
 import Content1 from "./components/Content1";
 import Content2 from "./components/Content2";
 import Content3 from "./components/Content3";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   landing: {
     height: "70vh",
     backgroundImage:
-      "linear-gradient(to bottom right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
+      "linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
     borderRadius: "0px 0px 0px 100px",
     [theme.breakpoints.down("xs")]: {
       height: "100vh",
+      backgroundImage:
+        "linear-gradient(to bottom, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
     },
   },
   inner: {
     height: "70vh",
-    // width: "100%",
     backgroundImage: "url(/bg-pattern-intro.svg)",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "-250px",
-    // backgroundSize: "90%",
+    backgroundPositionY: "-1350px",
+    backgroundPositionX: "-250px",
     [theme.breakpoints.down("xs")]: {
+      backgroundImage: "none",
+    },
+  },
+  mobileBackground: {
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
       height: "100vh",
-      // backgroundPosition: "-550px",
-      backcgroundSize: "20%",
+      width: "100%",
+      backgroundImage: "url(/bg-pattern-intro.svg)",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "1500px",
+      backgroundPositionY: "-330px",
+      backgroundPositionX: "-400px",
+      borderRadius: "0px 0px 0px 100px",
     },
   },
 }));
 
-// const theme = createMuiTheme({
-//   pallete: {
-//     primary: {
-//       main: "hsl(356, 100%, 66%)",
-//     },
-//   },
-// });
+const theme = createMuiTheme({
+  pallete: {
+    primary: {
+      main: "red",
+    },
+    secondary: "blue",
+  },
+  typography: {
+    fontFamily: "Ubuntu",
+  },
+});
 
 export default function Home() {
   const classes = useStyles();
@@ -70,18 +87,20 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      {/* <ThemeProvider theme={theme}> */}
-      <div className={classes.landing}>
-        <div className={classes.inner}>
-          <MyNavbar />
-          <MyBanner />
+      <ThemeProvider theme={theme}>
+        <div className={classes.landing}>
+          <div className={classes.inner}>
+            <div className={classes.mobileBackground}>
+              <MyNavbar />
+              <MyBanner />
+            </div>
+          </div>
         </div>
-      </div>
-      <Content1 />
-      <Content2 />
-      <Content3 />
-      <MyFooter />
-      {/* </ThemeProvider> */}
+        <Content1 />
+        <Content2 />
+        <Content3 />
+        <MyFooter />
+      </ThemeProvider>
     </div>
   );
   ``;
