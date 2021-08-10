@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
@@ -12,38 +13,25 @@ import Image from "next/image";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    marginLeft: "30px",
+    marginLeft: "30%",
   },
   paper: {
-    marginRight: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    minWidth: "250px",
   },
   btn: {
     textTransform: "none",
-    color: "white",
-    padding: "0",
-    marginTop: "12px",
-    borderRadius: "0",
-    lineHeight: "14px",
-    "&:hover": {
-      backgroundColor: "inherit",
-      borderBottom: "1px solid white",
-    },
+    color: "hsl(208, 49%, 24%)",
   },
-  arrow: {
-    marginLeft: "5px",
-  },
+
   menuList: {
     padding: "8px 20px",
+    backgroundColor: "rgb(240,240,240)",
   },
-  dropLink: {
-    textDecoration: "none",
-    color: "rgba(0,0,0,0.6)",
-    "&:hover": {
-      color: "rgba(0,0,0,1)",
-    },
-  },
+
   dropItem: {
-    color: "rgba(0,0,0,0.6)",
+    padding: "10px 80px",
+    color: "hsl(208, 49%, 24%)",
     "&:hover": {
       color: "rgba(0,0,0,1)",
       backgroundColor: "white",
@@ -51,13 +39,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DropDownProduct() {
+export default function HamburgerConnect() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+    let arrow = document.getElementById("arrow");
+    arrow.classList.add("rotate");
   };
 
   const handleClose = (event) => {
@@ -66,6 +56,8 @@ export default function DropDownProduct() {
     }
 
     setOpen(false);
+    let arrow = document.getElementById("arrow");
+    arrow.classList.remove("rotate");
   };
 
   function handleListKeyDown(event) {
@@ -95,16 +87,17 @@ export default function DropDownProduct() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Product &nbsp;
+          Connect &nbsp;
           <Image
-            src="/icon-arrow-light.svg"
+            src="/icon-arrow-dark.svg"
             alt="some"
-            // layout="responsive"
             width={10}
             height={7}
             className={classes.arrow}
+            id="arrow"
           />
         </Button>
+
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -120,7 +113,7 @@ export default function DropDownProduct() {
                   placement === "bottom" ? "center top" : "center bottom",
               }}
             >
-              <Paper>
+              <Paper className={classes.paper}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
                     className={classes.menuList}
@@ -132,31 +125,19 @@ export default function DropDownProduct() {
                       onClick={handleClose}
                       className={classes.dropItem}
                     >
-                      Overview
+                      Contact
                     </MenuItem>
                     <MenuItem
                       onClick={handleClose}
                       className={classes.dropItem}
                     >
-                      Pricing
+                      Newsletter
                     </MenuItem>
                     <MenuItem
                       onClick={handleClose}
                       className={classes.dropItem}
                     >
-                      Marketplace
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Features
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Integrations
+                      LinkedIn
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>

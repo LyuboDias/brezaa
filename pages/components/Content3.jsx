@@ -2,8 +2,9 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Image from "next/image";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: "url(/illustration-laptop-desktop.svg)",
     textAlign: "center",
@@ -11,30 +12,58 @@ const useStyles = makeStyles({
     backgroundPosition: "-270px",
     margin: "60px 0px",
     height: "100vh",
+    [theme.breakpoints.down("xs")]: {
+      backgroundImage: "none",
+      height: "100%",
+    },
   },
   wrap: {
     textAlign: "left",
     width: "50%",
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+      textAlign: "center",
+    },
   },
   muted: {
     color: "rgba(32,63,91,0.6)",
     marginTop: "30px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px",
+      fontWeight: "300",
+    },
   },
   content1Head: {
     padding: "60px 0px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "30px",
+    },
   },
   subhead: {
     marginTop: "30px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "26px",
+    },
   },
   empty: {
     width: "50%",
     height: "90vh",
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
   },
   container: {
     display: "flex",
     alignItems: "center",
   },
-});
+  mobileImg: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+      width: "90%",
+    },
+  },
+}));
 
 export default function Content3() {
   const classes = useStyles();
@@ -42,6 +71,14 @@ export default function Content3() {
   return (
     <div className={classes.root}>
       <Container>
+        <div className={classes.mobileImg}>
+          <Image
+            src="/illustration-laptop-mobile.svg"
+            alt="some"
+            width={498}
+            height={359}
+          />
+        </div>
         <div>
           <div className={classes.container}>
             <div className={classes.empty}></div>

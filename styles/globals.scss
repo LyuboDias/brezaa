@@ -43,10 +43,15 @@ body {
   font-weight: 400;
 }
 
-// .navbar {
-//   font-family: $ubuntu;
-// }
+.rotate {
+  transition: all 0.5s linear;
+  transform: rotate(180deg);
+}
 
-.img-test {
-  width: 600px;
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }

@@ -4,28 +4,47 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Image from "next/image";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage:
       "linear-gradient(to bottom left, hsl(237, 23%, 32%), hsl(237, 17%, 21%))",
     borderRadius: "0px 100px 0px 100px",
-    height: "50vh",
+    height: "60vh",
     margin: "100px 0px",
+    [theme.breakpoints.down("xs")]: {
+      height: "100vh",
+      borderRadius: "0px 100px 0px 100px",
+      marginTop: "300px",
+      // width: "400px",
+    },
   },
   background: {
-    height: "50vh",
+    height: "60vh",
     backgroundImage: "url(/bg-pattern-circles.svg)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "-200px",
     position: "relative",
+    [theme.breakpoints.down("xs")]: {
+      height: "100vh",
+      backgroundPositionY: "-150px",
+      backgroundPositionX: "-70px",
+      backgroundSize: "500px",
+    },
   },
   muted: {
     color: "rgba(255,255,255,0.6)",
     marginTop: "30px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px",
+      fontWeight: "300",
+    },
   },
   subhead: {
     color: "white",
     marginTop: "60px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "26px",
+    },
   },
   wrapper: {
     position: "absolute",
@@ -33,13 +52,36 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     height: "70vh",
+    [theme.breakpoints.down("xs")]: {
+      top: "160px",
+    },
   },
   textDiv: {
     padding: "100px",
     display: "block",
     alignItems: "center",
+    [theme.breakpoints.down("xs")]: {
+      padding: "10px",
+    },
   },
-});
+  mobileImg: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+      position: "absolute",
+      top: "-180px",
+      // marginTop: "200px",
+    },
+  },
+  Img: {
+    // display: "none",
+    [theme.breakpoints.down("xs")]: {
+      // display: "block",
+      // width: "90%",
+      display: "none",
+    },
+  },
+}));
 
 export default function Content2() {
   const classes = useStyles();
@@ -47,14 +89,22 @@ export default function Content2() {
   return (
     <div className={classes.root}>
       <div className={classes.background}>
+        <div className={classes.mobileImg}>
+          <Image
+            src="/illustration-phones.svg"
+            alt="some"
+            width={700}
+            height={750}
+          />
+        </div>
         <Container>
           <div className={classes.wrapper}>
-            <div>
+            <div className={classes.Img}>
               <Image
                 src="/illustration-phones.svg"
                 alt="some"
-                width={1100}
-                height={1200}
+                width={1800}
+                height={2000}
               />
             </div>
             <div className={classes.textDiv}>

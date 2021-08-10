@@ -20,25 +20,28 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "100px",
   },
   btn: {
+    textTransform: "none",
     color: "white",
+    padding: "0",
+    marginTop: "12px",
+    borderRadius: "0",
+    lineHeight: "14px",
     "&:hover": {
       backgroundColor: "inherit",
-      borderBottom: "2px solid white",
+      borderBottom: "1px solid white",
     },
   },
-  arrow: {
-    marginLeft: "5px",
+  dropLink: {
+    textDecoration: "none",
+    color: "rgba(0, 0, 0, 0.6)",
+    "&:hover": {
+      color: "rgba(0, 0, 0, 1)",
+    },
   },
   menuList: {
     padding: "8px 20px",
   },
-  dropLink: {
-    textDecoration: "none",
-    color: "rgba(0,0,0,0.6)",
-    "&:hover": {
-      color: "rgba(0,0,0,1)",
-    },
-  },
+
   dropItem: {
     color: "rgba(0,0,0,0.6)",
     "&:hover": {
@@ -55,6 +58,8 @@ export default function DropDownContact() {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+    let arrow = document.getElementById("arrow");
+    arrow.classList.add("rotate");
   };
 
   const handleClose = (event) => {
@@ -63,6 +68,8 @@ export default function DropDownContact() {
     }
 
     setOpen(false);
+    let arrow = document.getElementById("arrow");
+    arrow.classList.remove("rotate");
   };
 
   function handleListKeyDown(event) {
@@ -92,16 +99,17 @@ export default function DropDownContact() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Contact
+          Contact &nbsp;
           <Image
             src="/icon-arrow-light.svg"
             alt="some"
-            // layout="responsive"
             width={10}
             height={7}
             className={classes.arrow}
+            id="arrow"
           />
         </Button>
+
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -129,8 +137,8 @@ export default function DropDownContact() {
                       onClick={handleClose}
                       className={classes.dropItem}
                     >
-                      <Link href="/contact" className={classes.dropLink}>
-                        Contact
+                      <Link href="/contact">
+                        <span className={classes.dropLink}>Contact</span>
                       </Link>
                     </MenuItem>
                     <MenuItem

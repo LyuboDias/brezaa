@@ -13,6 +13,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 100px",
     borderRadius: "0px 100px 0px 0px",
     padding: "50px 50px",
+    [theme.breakpoints.down("xs")]: {
+      height: "100%",
+      display: "block",
+      textAlign: "center",
+    },
   },
   footerLink: {
     color: "hsl(240, 2%, 79%)",
@@ -29,6 +34,16 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     paddingLeft: "0",
   },
+  logo: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "60px 0px",
+    },
+  },
+  wrap: {
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "40px",
+    },
+  },
 }));
 
 export default function MyFooter() {
@@ -36,7 +51,7 @@ export default function MyFooter() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.container}>
+      <div className={classes.logo}>
         <Image
           src="/logo.svg"
           alt="some"
@@ -45,7 +60,7 @@ export default function MyFooter() {
           className={classes.arrow}
         />
       </div>
-      <div>
+      <div className={classes.wrap}>
         <h3>Product</h3>
 
         <ul className={classes.footerUl}>
@@ -76,7 +91,7 @@ export default function MyFooter() {
           </li>
         </ul>
       </div>
-      <div>
+      <div className={classes.wrap}>
         <h3>Company</h3>
         <ul className={classes.footerUl}>
           <li className={classes.footerLi}>
@@ -101,7 +116,7 @@ export default function MyFooter() {
           </li>
         </ul>
       </div>
-      <div>
+      <div className={classes.wrap}>
         <h3>Connect</h3>
         <ul className={classes.footerUl}>
           <li className={classes.footerLi}>

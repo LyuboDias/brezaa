@@ -1,23 +1,33 @@
 import React from "react";
-import MainButton from "./MainButton";
-import SecondButton from "./SecondButton";
+import SignUpBtn from "./SignUpBtn";
+import LearnBtn from "./LearnBtn";
+import StartBtn from "./StartBtn";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    // display: "flex",
     textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      padding: "50px 40px",
+    },
   },
   muted: {
     color: "rgba(255,255,255,0.6)",
     marginBottom: "30px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "18px",
+    },
   },
   headText: {
     color: "white",
     margin: "50px 0px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "34px",
+      margin: "30px 0px",
+    },
   },
-});
+}));
 
 export default function MyBanner() {
   const classes = useStyles();
@@ -31,8 +41,8 @@ export default function MyBanner() {
         Grow your audience and build your online brand
       </Typography>
       <div>
-        <MainButton />
-        <SecondButton />
+        <StartBtn />
+        <LearnBtn />
       </div>
     </div>
   );

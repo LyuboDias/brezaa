@@ -8,42 +8,57 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
+import Link from "next/link";
+import HamburgerConnect from "./HamburgerConnect";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    marginLeft: "30px",
+    // marginLeft: "30px",
   },
   paper: {
-    marginRight: theme.spacing(2),
+    position: "absolute",
+    width: "320px",
+    height: "380px",
+    margin: "40px auto",
+    padding: "20px 60px",
+    textAlign: "center",
+    right: "-40px",
   },
-  btn: {
-    textTransform: "none",
-    color: "white",
-    padding: "0",
-    marginTop: "12px",
-    borderRadius: "0",
-    lineHeight: "14px",
-    "&:hover": {
-      backgroundColor: "inherit",
-      borderBottom: "1px solid white",
-    },
-  },
-  arrow: {
-    marginLeft: "5px",
-  },
-  menuList: {
-    padding: "8px 20px",
-  },
-  dropLink: {
+  hr: {},
+  login: {
     textDecoration: "none",
-    color: "rgba(0,0,0,0.6)",
+    color: "hsl(208, 49%, 24%)",
     "&:hover": {
       color: "rgba(0,0,0,1)",
     },
   },
+  sign: {
+    marginTop: "20px",
+    backgroundImage:
+      "linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
+    borderRadius: "20px",
+    color: "white",
+    padding: "10px 12px",
+    minWidth: "120px",
+  },
+
+  menuList: {
+    // display: "block",
+    // alignItems: "center",
+  },
+  dropLink: {
+    color: "hsl(208, 49%, 24%)",
+    "&:hover": {
+      color: "rgba(0,0,0,1)",
+    },
+  },
+  x: {
+    display: "none",
+  },
   dropItem: {
-    color: "rgba(0,0,0,0.6)",
+    padding: "10px 80px",
+    color: "hsl(208, 49%, 24%)",
     "&:hover": {
       color: "rgba(0,0,0,1)",
       backgroundColor: "white",
@@ -51,13 +66,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DropDownProduct() {
+export default function Hamburger() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+    let burger = document.getElementById("burger");
+    burger.classList.add("hide");
+    // let x = document.getElementById("x");
+    // x.classList.add("show");
   };
 
   const handleClose = (event) => {
@@ -95,15 +114,21 @@ export default function DropDownProduct() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Product &nbsp;
           <Image
-            src="/icon-arrow-light.svg"
+            src="/icon-hamburger.svg"
             alt="some"
-            // layout="responsive"
-            width={10}
-            height={7}
-            className={classes.arrow}
+            width={32}
+            height={18}
+            id="burger"
           />
+          {/* <Image
+            src="/icon-close.svg"
+            alt="some"
+            width={32}
+            height={18}
+            className={classes.x}
+            id="x"
+          /> */}
         </Button>
         <Popper
           open={open}
@@ -120,7 +145,7 @@ export default function DropDownProduct() {
                   placement === "bottom" ? "center top" : "center bottom",
               }}
             >
-              <Paper>
+              <Paper className={classes.paper}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
                     className={classes.menuList}
@@ -132,34 +157,36 @@ export default function DropDownProduct() {
                       onClick={handleClose}
                       className={classes.dropItem}
                     >
-                      Overview
+                      Product &nbsp;
+                      <Image
+                        src="/icon-arrow-dark.svg"
+                        alt="some"
+                        width={10}
+                        height={7}
+                      />
                     </MenuItem>
                     <MenuItem
                       onClick={handleClose}
                       className={classes.dropItem}
                     >
-                      Pricing
+                      Company &nbsp;
+                      <Image
+                        src="/icon-arrow-dark.svg"
+                        alt="some"
+                        width={10}
+                        height={7}
+                      />
                     </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Marketplace
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Features
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Integrations
-                    </MenuItem>
+                    <HamburgerConnect />
                   </MenuList>
                 </ClickAwayListener>
+                <hr className={classes.hr} />
+                <br />
+                <Link href="/">
+                  <span className={classes.login}>Login</span>
+                </Link>
+                <br />
+                <Button className={classes.sign}>Sign Up</Button>
               </Paper>
             </Grow>
           )}

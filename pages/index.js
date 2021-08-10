@@ -14,13 +14,22 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage:
       "linear-gradient(to bottom right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
     borderRadius: "0px 0px 0px 100px",
+    [theme.breakpoints.down("xs")]: {
+      height: "100vh",
+    },
   },
   inner: {
     height: "70vh",
-    width: "100%",
+    // width: "100%",
     backgroundImage: "url(/bg-pattern-intro.svg)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "-250px",
+    // backgroundSize: "90%",
+    [theme.breakpoints.down("xs")]: {
+      height: "100vh",
+      // backgroundPosition: "-550px",
+      backcgroundSize: "20%",
+    },
   },
 }));
 

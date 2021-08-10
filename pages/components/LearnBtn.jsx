@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-const secButton = makeStyles({
+const useStyles = makeStyles({
   root: {
     fontFamily: "Ubuntu",
     minWidth: "120px",
@@ -21,9 +21,9 @@ const secButton = makeStyles({
   },
 });
 
-function SecondButton() {
-  const secButtonClasses = secButton();
-  return <Button className={secButtonClasses.root}>Learn More</Button>;
+function learnBtn() {
+  const classes = useStyles();
+  return <Button className={classes.root}>Learn More</Button>;
 }
 
-export default SecondButton;
+export default learnBtn;

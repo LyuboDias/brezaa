@@ -18,10 +18,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   btn: {
+    textTransform: "none",
     color: "white",
+    padding: "0",
+    marginTop: "12px",
+    borderRadius: "0",
+    lineHeight: "14px",
     "&:hover": {
       backgroundColor: "inherit",
-      borderBottom: "2px solid white",
+      borderBottom: "1px solid white",
     },
   },
   arrow: {
@@ -90,7 +95,7 @@ export default function DropDownCompany() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Company
+          Company &nbsp;
           <Image
             src="/icon-arrow-light.svg"
             alt="some"

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-const myButton = makeStyles({
+const useStyles = makeStyles({
   root: {
     textTransform: "none",
     fontFamily: "Ubuntu",
@@ -20,9 +20,9 @@ const myButton = makeStyles({
   },
 });
 
-function MainButton() {
-  const myButtonClasses = myButton();
-  return <Button className={myButtonClasses.root}>Sign Up</Button>;
+function SignUpBtn() {
+  const classes = useStyles();
+  return <Button className={classes.root}>Sign Up</Button>;
 }
 
-export default MainButton;
+export default SignUpBtn;
