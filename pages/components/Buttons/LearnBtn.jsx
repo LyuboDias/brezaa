@@ -21,9 +21,9 @@ const useStyles = makeStyles({
   },
 });
 
-function learnBtn() {
+function LearnBtn() {
   const classes = useStyles();
   return <Button className={classes.root}>Learn More</Button>;
 }
 
-export default learnBtn;
+export default LearnBtn;

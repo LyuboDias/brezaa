@@ -75,7 +75,6 @@ export default function DropDownCompany() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -99,7 +98,6 @@ export default function DropDownCompany() {
           <Image
             src="/icon-arrow-light.svg"
             alt="some"
-            // layout="responsive"
             width={10}
             height={7}
             className={classes.arrow}

@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import MyFooter from "./components/MyFooter";
-import MyNavbar from "./components/MyNavbar";
+import MyNavbar from "./components/Navbar/MyNavbar";
 import ContactForm from "./components/ContactForm";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import InstagramIcon from "@material-ui/icons/Instagram";

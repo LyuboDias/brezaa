@@ -1,40 +1,36 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Grow from "@material-ui/core/Grow";
-import Paper from "@material-ui/core/Paper";
-import Popper from "@material-ui/core/Popper";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 import Image from "next/image";
 import Link from "next/link";
-import HamburgerConnect from "./HamburgerConnect";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    // marginLeft: "30px",
-    position: "relative",
+    padding: "0px 20px",
+    right: "30px",
+    left: "30px",
+    bottom: "30px",
+    borderRadius: "6px",
   },
-  paper: {
-    position: "absolute",
-    width: "320px",
-    height: "400px",
-    margin: "40px auto",
-    padding: "20px 60px",
+  list: {
+    width: 120,
+    margin: "0px auto",
+    padding: "10px 0px",
+  },
+  listItem: {
     textAlign: "center",
-    right: "-30px",
-    zIndex: "99",
+    margin: "10px 0px",
   },
-  hr: {},
-  login: {
-    textDecoration: "none",
-    color: "hsl(208, 49%, 24%)",
-    "&:hover": {
-      color: "rgba(0,0,0,1)",
-    },
+  listWrap: {
+    margin: "0px",
+    padding: "20px",
   },
+
   sign: {
     marginTop: "20px",
     backgroundImage:
@@ -44,152 +40,120 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 12px",
     minWidth: "120px",
   },
+  listDrop: {
+    textAlign: "center",
+    backgroundColor: "hsl(240, 2%, 79%)",
+    borderRadius: "6px",
 
-  menuList: {
-    display: "table",
-    // height: "100%",
+    margin: "0px auto",
+    padding: "10px 0px",
   },
-  dropLink: {
+  listItemDrop: {
+    margin: "6px auto",
+  },
+  login: {
+    textDecoration: "none",
     color: "hsl(208, 49%, 24%)",
+    margin: "0px auto",
     "&:hover": {
       color: "rgba(0,0,0,1)",
-    },
-  },
-  x: {
-    display: "none",
-  },
-  dropItem: {
-    padding: "10px 55px",
-    color: "hsl(208, 49%, 24%)",
-    "&:hover": {
-      color: "rgba(0,0,0,1)",
-      backgroundColor: "white",
     },
   },
 }));
 
-export default function Hamburger() {
+export default function Type() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const [state, setState] = React.useState({
+    bottom: false,
+  });
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
-    setOpen(false);
+    setState({ ...state, [anchor]: open });
   };
 
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
+  const list = (anchor) => (
+    <div
+      className={classes.listWrap}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List className={classes.list}>
+        <ListItem className={classes.listItem}>
+          Product &nbsp;
+          <Image src="/icon-arrow-dark.svg" alt="some" width={10} height={7} />
+        </ListItem>
+        <ListItem className={classes.listItem}>
+          Company &nbsp;
+          <Image src="/icon-arrow-dark.svg" alt="some" width={10} height={7} />
+        </ListItem>
+        <ListItem className={classes.listItem}>
+          Connect &nbsp;
+          <Image src="/icon-arrow-dark.svg" alt="some" width={10} height={7} />
+        </ListItem>
+      </List>
+      <List className={classes.listDrop}>
+        <ListItem>
+          <span className={classes.listItemDrop}>Contact</span>{" "}
+        </ListItem>
+        <ListItem>
+          <span className={classes.listItemDrop}>Newsletter</span>{" "}
+        </ListItem>
+        <ListItem>
+          <span className={classes.listItemDrop}>LinkedIn</span>{" "}
+        </ListItem>
+      </List>
 
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
+      <Divider />
+      <List className={classes.list}>
+        <ListItem className={classes.listItem}>
+          <Link href="/">
+            <span className={classes.login}>Login</span>
+          </Link>
+        </ListItem>
+        <Button className={classes.sign}>Sign Up</Button>
+      </List>
+    </div>
+  );
 
   return (
-    <div className={classes.root}>
-      <div>
-        <Button
-          className={classes.btn}
-          ref={anchorRef}
-          aria-controls={open ? "menu-list-grow" : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          <Image
-            src="/icon-hamburger.svg"
-            alt="some"
-            width={32}
-            height={18}
-            id="burger"
-          />
-          {/* <Image
-            src="/icon-close.svg"
-            alt="some"
-            width={32}
-            height={18}
-            className={classes.x}
-            id="x"
-          /> */}
-        </Button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
-            >
-              <Paper className={classes.paper}>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    className={classes.menuList}
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Product &nbsp;
-                      <Image
-                        src="/icon-arrow-dark.svg"
-                        alt="some"
-                        width={10}
-                        height={7}
-                      />
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.dropItem}
-                    >
-                      Company &nbsp;
-                      <Image
-                        src="/icon-arrow-dark.svg"
-                        alt="some"
-                        width={10}
-                        height={7}
-                      />
-                    </MenuItem>
-                    <HamburgerConnect />
-                  </MenuList>
-                </ClickAwayListener>
-                <hr className={classes.hr} />
-                <br />
-                <Link href="/">
-                  <span className={classes.login}>Login</span>
-                </Link>
-                <br />
-                <Button className={classes.sign}>Sign Up</Button>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
+    <div className={classes.divBtns}>
+      {["bottom"].map((anchor) => (
+        <React.Fragment key={anchor} className={classes.root}>
+          <Button onClick={toggleDrawer(anchor, true)}>
+            <Image
+              src="/icon-hamburger.svg"
+              alt="some"
+              width={32}
+              height={18}
+              className={classes.hamburger}
+              id="hamburger"
+            />
+            <Image
+              src="/icon-close.svg"
+              alt="some"
+              width={26}
+              height={26}
+              className="close"
+              id="close"
+            />
+          </Button>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
     </div>
   );
 }

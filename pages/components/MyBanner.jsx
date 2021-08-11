@@ -1,5 +1,4 @@
 import React from "react";
-import SignUpBtn from "./Buttons/SignUpBtn";
 import LearnBtn from "./Buttons/LearnBtn";
 import StartBtn from "./Buttons/StartBtn";
 import Typography from "@material-ui/core/Typography";

@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import SignUpBtn from "../Buttons/SignUpBtn";
 import Hamburger from "./Hamburger";
-import Type from "./Type";
 import DropDownContact from "./DropDownContact";
 import DropDownProduct from "./DropDownProduct";
 import DropDownCompany from "./DropDownCompany";
@@ -62,8 +61,7 @@ export default function MyNavbar() {
           </Link>
         </div>
         <div>
-          <Type />
-          {/* <Hamburger /> */}
+          <Hamburger />
         </div>
       </div>
       <Toolbar className={classes.root}>

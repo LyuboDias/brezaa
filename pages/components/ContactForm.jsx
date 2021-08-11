@@ -30,13 +30,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     backgroundImage:
       "linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))",
-    [theme.breakpoints.down("xs")]: {
-      // width: "100%",
-      // textAlign: "center",
-      // height: "100%",
-      // flexWrap: "wrap",
-      // paddingTop: "30px",
-    },
+    [theme.breakpoints.down("xs")]: {},
   },
 }));
 

@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
       height: "100vh",
       borderRadius: "0px 100px 0px 100px",
       marginTop: "300px",
-      // width: "400px",
     },
   },
   background: {
@@ -70,14 +69,10 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
       position: "absolute",
       top: "-180px",
-      // marginTop: "200px",
     },
   },
   Img: {
-    // display: "none",
     [theme.breakpoints.down("xs")]: {
-      // display: "block",
-      // width: "90%",
       display: "none",
     },
   },
